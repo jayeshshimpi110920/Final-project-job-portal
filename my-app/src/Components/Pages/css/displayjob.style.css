@@ -1,0 +1,78 @@
+.fhhh{
+    border: 1px solid red;
+    /* border-color: blueviolet; */
+}
+
+.jobContainer{
+    width: 40%;
+}
+
+.card{
+    border: 1px solid black;
+    padding: 10px;
+    cursor: pointer;
+    position: relative;
+    height: 300px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+}
+
+.job_title{
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.job_subTitle{
+    font-size: 16px;
+}
+
+.job_snippet{
+    margin: 20px 0px 10px 0px;
+    font-size: 15px;
+    line-height: 1.4rem;
+}
+
+.greyText{
+    font-size: 14px;
+    color: grey;
+}
+
+.job_section{
+    padding: 0 8vw;
+    position: relative;
+}
+
+.sort_container{
+    display: flex;
+    justify-content: space-between;
+    width: 450px;
+    font-size: 14px;
+    margin: 10px 0px;
+}
+
+.sortStyle{
+    cursor: pointer;
+    
+}
+sortStyle:hover{
+    text-decoration: underline;
+}
+
+.bold{
+    font-weight: bolder;
+    cursor: pointer;
+}
+
+
+
+@media only screen and (max-width: 600px) {
+    .mainjob{
+        display: none;
+    }
+
+    .chhh{
+        width: 400px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
