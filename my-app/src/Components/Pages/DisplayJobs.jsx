@@ -133,7 +133,7 @@ function DisplayJobs(props) {
                             jobs.map((job,index)=>
                             <Grid className="card"  item key={job.jobkey} lg={12} md={12} sm={12} xs={12} >
                                 <Box 
-                                // onClick={()=>getJobDescription(job)} 
+                                onClick={()=>getJobDescription(job)} 
                                 >
                                     <Typography  className="job_title">
                                         {job.jobTitle}
@@ -157,9 +157,9 @@ function DisplayJobs(props) {
                         
                     </Grid>
                     
-                    {/* {
+                    {
                         jobData ? <JobDescription  className="chhh" jobData={jobData} summary={job.snippet} /> : <></> 
-                    } */}
+                    }
                    
                     
                 </Box>

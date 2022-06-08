@@ -63,7 +63,7 @@ export function CompanyReviews() {
 
 
      
-const typeWriter = ["Machine Learning", "Java Developer", "Data Analyst", "iOs Devloper", "Software Developer"];
+const typeWriter = ["AI/ML", "Java Developer", "Data Analyst", "iOs Devloper", "SDE"];
 
 
     return isAuth ? ( !isSearching ?

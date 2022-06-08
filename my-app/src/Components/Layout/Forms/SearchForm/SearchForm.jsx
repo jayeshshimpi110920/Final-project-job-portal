@@ -60,7 +60,6 @@ function SearchForm(props) {
         saveData("recent",data.reverse())
         history.push(`/jobs?q=${job}&location=${location}&page=1`)
 
-        // console.log(str,"str")
 
     }
 
@@ -73,7 +72,7 @@ function SearchForm(props) {
     return (
         (<>
             { error ? <Box>Query is Empty</Box> : <></> }
-            <form  onSubmit={handleSearch} className="searchForm">
+            <form  onSubmit={handleSearch} className="searchForm" style={{width:"60%", marginLeft:"auto", marginRight:"auto"}}>
                 <Grid container spacing={1}>
                     
                     <InputGrid setValue={setJob} value={job} label={'What?'} 

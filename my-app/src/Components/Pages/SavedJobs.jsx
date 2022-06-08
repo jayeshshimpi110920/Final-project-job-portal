@@ -50,7 +50,7 @@ function SavedJobs(props) {
     const handleApply=()=>{
         const user_id=mystate.user_id;
         // console.log(jobId)
-        applied_job[jobId]={...saved_jobs[jobId],dateSaved:new Date().getTime()}
+        applied_job[jobId]={...saved_jobs[jobId]}
         delete saved_jobs[jobId]
         dispatch(makeApplyRequest({user_id:user_id,saved_jobs,applied_job}))
         setOpen(false)
@@ -109,9 +109,6 @@ function SavedJobs(props) {
                                              disabled={applied_job[key]?true:false}>
                                                     {applied_job[key]?"Already applied":"Apply"}
                                                 </Button>
-                                            <Button className="updateButton">
-                                                    Update
-                                            </Button>
                                             </Box>
                                             <Box onClick={()=>{removeFromSaved({jobkey:key})}} style={{cursor:"pointer",width:"40px",height:'40px',display:'flex',justifyContent:'center',alignItems:'center'}} >
                                                 <span>

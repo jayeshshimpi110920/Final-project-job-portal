@@ -37,7 +37,7 @@ export default function Header() {
 
   return (
       <div className="root">
-        <AppBar elevation={0} color={'secondary'} position="static">
+        <AppBar elevation={0} color={'secondary'} position="static" style={{position:"fixed", top:"0",overflow:"hidden"}}>
           <Toolbar className="toolbar" >
               <Container className="header_container" disableGutters maxWidth={false}>
                   <Box className="header_left">
@@ -92,14 +92,15 @@ export default function Header() {
                           {/* <Typography style={{display:'flex',alignItems:'center'}} component={NavLink} variant='h6' to='/postjob' >
                               Employers/jobs
                           </Typography> */}
-                          <div style={{display:'flex',alignItems:'center', fontWeight:'bold'}} component={NavLink} variant='h6' >
+                          {/* <div style={{display:'flex',alignItems:'center', fontWeight:'bold'}} component={NavLink} variant='h6' >
                               Employers/jobs
-                          </div>
+                          </div> */}
                       
                   </Box>
               </Container>
           </Toolbar>
         </AppBar>
+        <div style={{height:"45px"}}></div>
         
       </div>
   );
