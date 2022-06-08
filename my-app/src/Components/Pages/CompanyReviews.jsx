@@ -91,7 +91,7 @@ const typeWriter = ["Machine Learning", "Java Developer", "Data Analyst", "iOs D
                     <img src="/Images/location.PNG" alt="location pin" style = {{padding: "5px 0 5px 10px"}} />
                 </Grid>
                 <Grid item>
-                    <Typography style = {{paddingTop: "15px"}} variant = "h5">Companies Hiring Now</Typography>
+                    <Typography style = {{paddingTop: "15px"}} variant = "h5">Companies Review</Typography>
                 </Grid>
             </Grid>
             <Grid container style={{width:'1000px'}}>
@@ -144,6 +144,9 @@ const typeWriter = ["Machine Learning", "Java Developer", "Data Analyst", "iOs D
                     }
             </Grid>
         </Grid>
+
+
+        
         <Grid className = "companiesHiring" style = {{borderTop: "10px solid #ff5a1f", padding: "25px", justifyContent: "space-between"}} container item xl={9} lg={9} md={9} sm={11} xs={12}>
             <Grid item >
                 <Typography variant = "h5">Rate your recent company:</Typography>

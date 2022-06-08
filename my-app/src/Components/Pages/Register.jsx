@@ -15,12 +15,18 @@ const GreenCheckbox = ((props) => <Checkbox color="default" {...props} />);
 export function Register() {
     const isAuth = useSelector(state=>state.login.isAuth)
 
+
+    const[name,setName] = useState("");
     const[email, setEmail] = useState("");
     const[password, setPassword] = useState("");
     const dispatch = useDispatch();
     const [snackBarOpen,setSnackBarOpen] = useState(false)
     
-    const {success,isError,errorMsg} = useSelector(state=>state.register)
+    // const {success,isError,errorMsg} = useSelector(state=>state.register)
+
+    const onNameChange = (e) =>{
+        setName(e.target.value);
+    }
     
     const onEmailChange = (e) => {
         setEmail(e.target.value)
@@ -32,7 +38,7 @@ export function Register() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        dispatch(makeRegisterRequest({email,password}))
+        dispatch(makeRegisterRequest({name,email,password}))
         
     }
 
@@ -50,14 +56,16 @@ export function Register() {
 
                 <Grid item>
                     <form onSubmit = { handleSubmit }>
+                    <FormHelperText className = "formhelperText">Name</FormHelperText>
+                        <OutlinedInput  className = "outlinedInput" onChange = { onNameChange } value = { name } required type = "text" variant="outlined"/>
                         <FormHelperText className = "formhelperText">Email Address</FormHelperText>
                         <OutlinedInput  className = "outlinedInput" onChange = { onEmailChange } value = { email } required type = "text" variant="outlined"/>
                         <FormHelperText className = "formhelperText">Password</FormHelperText>
                         <OutlinedInput  className = "outlinedInput" onChange = { onPasswordChange } value = { password } required type = "password" variant="outlined"/>
-                        <FormControlLabel className = "checkbox"
+                        {/* <FormControlLabel className = "checkbox"
                             control = {<GreenCheckbox/>}
                             label = "Keep me signed in on this device."
-                        />
+                        /> */}
                         <br/>
                         <Button
                             type = "submit"

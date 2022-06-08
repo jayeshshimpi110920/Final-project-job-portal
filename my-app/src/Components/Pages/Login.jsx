@@ -61,10 +61,10 @@ export function Login() {
                         <OutlinedInput  className = "outlinedInput" onChange = { onEmailChange } value = { email } required type = "email" variant="outlined"/>
                         <FormHelperText className = "formhelperText">Password</FormHelperText>
                         <OutlinedInput  className = "outlinedInput" onChange = { onPasswordChange } value = { password } required type = "password" variant="outlined"/>
-                        <FormControlLabel className = "checkbox"
+                        {/* <FormControlLabel className = "checkbox"
                             control = {<GreenCheckbox/>}
                             label = "Keep me signed in on this device."
-                        />
+                        /> */}
                         <br/>
                         <div style={{display:"flex",justifyContent:"center",alignItems:"center"}} >
                         {

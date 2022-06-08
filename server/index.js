@@ -17,6 +17,7 @@ mongoose.connect("mongodb://localhost:27017/myLoginRegisterDB", {
 })
 
 const userSchema = new mongoose.Schema({
+    name:String,
     email: String,
     password: String,
     user_id :String,
@@ -34,7 +35,7 @@ app.get('/login', function(req, res) {
 });
 
 app.post("/register", async(req, res)=> {
-    const { email, password ,user_id, saved_jobs , applied_job , my_reviews } = req.body;    
+    const {name, email, password ,user_id, saved_jobs , applied_job , my_reviews } = req.body;    
 
     User.findOne({email: email}, (err, user) => {
         if(user){
@@ -42,6 +43,7 @@ app.post("/register", async(req, res)=> {
         } else {
 
             const user = new User({
+                name,
                 email,
                 password,
                 user_id,

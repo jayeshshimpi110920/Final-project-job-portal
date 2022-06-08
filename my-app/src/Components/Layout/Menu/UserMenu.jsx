@@ -13,32 +13,7 @@ import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../../../Redux/Login/actions';
 
-// const PREFIX = 'UserMenu';
 
-// const classes = {
-//   paper: `${PREFIX}-paper`,
-//   root: `${PREFIX}-root`
-// };
-
-// const Root = styled('div')((
-//   {
-//     theme
-//   }
-// ) => ({
-//   [`& .${classes.paper}`]: {
-//     border: '1px solid #d3d4d5',
-//   },
-
-//   [`& .${classes.root}`]: {
-//       width:'400px',
-//     '&:focus': {
-      
-//       '& .MuiListItemIcon-root, & .MuiListItemText-primary': {
-        
-//       },
-//     },
-//   }
-// }));
 
 const StyledMenu = ((props) => (
   <Menu
@@ -89,46 +64,30 @@ export default function UserMenu() {
         anchorEl={anchorEl}
         keepMounted
         open={Boolean(anchorEl)}
-        onClose={handleClose}
-        // classes={{
-        //   paper: classes.paper
-        // }}
-        >
+        onClose={handleClose}>
         <Typography variant={'h5'} style={{fontSize:'20px',marginLeft:'15px'}}>
-            {loggedUser.email}
+            {loggedUser.name}
         </Typography>
         <StyledMenuItem
           onClick={()=>{
               handleClose()
               history.push('/savedjobs')}}
-          // classes={{
-          //   root: classes.root
-          // }}
           >
           <ListItemIcon>
             <FavoriteIcon fontSize="small" />
           </ListItemIcon>
           <ListItemText primary="My Jobs" />
         </StyledMenuItem>
-        <StyledMenuItem
-          // classes={{
-          //   root: classes.root
-          // }}
-          >
+        <StyledMenuItem>
           <ListItemIcon>
             <RateReviewIcon fontSize="small" />
           </ListItemIcon>
           <ListItemText primary="My Reviews" />
         </StyledMenuItem>
-        <StyledMenuItem
-          onClick={()=>{
+        <StyledMenuItem onClick={()=>{
               handleClose()
               dispatch(logout())
-              }}
-          // classes={{
-          //   root: classes.root
-          // }}
-          >
+              }}>
           <ListItemIcon>
             <PowerSettingsNewIcon fontSize="small" />
           </ListItemIcon>

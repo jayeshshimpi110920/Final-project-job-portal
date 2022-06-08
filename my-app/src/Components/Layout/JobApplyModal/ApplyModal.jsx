@@ -33,22 +33,6 @@ const modal={
     justifyContent: 'center'
 }
 
-//   [`& .${classes.paper}`]: {
-//     backgroundColor: theme.palette.background.paper,
-//     boxShadow: theme.shadows[5],
-//     padding: theme.spacing(2, 4, 3),
-//     outline:'none'
-//   },
-
-//   [`& .${classes.applyForm}`]: {
-    // boxSizing:'border-box',
-    // width: "600px",
-    // borderRadius:"10px", 
-    // height: "80vh", 
-    // backgroundColor: "white",
-    // outline:'none',
-    // padding:'40px',
-//   },
 
 const applyForm={
   boxSizing:'border-box',
@@ -61,10 +45,6 @@ const applyForm={
 
 }
 
-//   [`& .${classes.label}`]: {
-//     marginBottom:"20px"
-//   }
-// }));
 
 const textbox={
   width:"100%",

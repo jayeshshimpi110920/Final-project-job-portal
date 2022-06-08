@@ -25,19 +25,19 @@ const registerFailure = (errorMsg) => {
   };
 };
 
-export const makeRegisterRequest = ({ email, password }) => (dispatch) => {
+export const makeRegisterRequest = ({name, email, password }) => (dispatch) => {
   dispatch(registerRequest());
 
   axios
     .get("http://localhost:9002/login")
     .then((res) => {
       console.log(res.data.users);
-      dispatch(checkUserExists(email, password, res.data.users));
+      dispatch(checkUserExists(name ,email, password, res.data.users));
     })
     .catch((err) => dispatch(registerFailure("Something went wrong")));
 };
 
-const checkUserExists = (email, password, usersData) => (dispatch) => {
+const checkUserExists = (name ,email, password, usersData) => (dispatch) => {
   for (let i = 0; i < usersData.length; i++) {
     if (usersData[i].email === email) {
       alert("already exist")
@@ -46,14 +46,15 @@ const checkUserExists = (email, password, usersData) => (dispatch) => {
     }
   }
 
-  dispatch(registerNewUser({ email, password }));
+  dispatch(registerNewUser({name, email, password }));
 };
 
-const registerNewUser = ({ email, password }) => (dispatch) => {
+const registerNewUser = ({name, email, password }) => (dispatch) => {
 
 
   axios
     .post("http://localhost:9002/register", {
+      name,
       email,
       password,
       user_id: uuid(),
