@@ -50,10 +50,6 @@ export function Login() {
     return !isAuth ?
     <div className='outerdiv'>
     <Container className = "container" maxWidth = "xl">
-
-        {/* <Box className = "boxImg" style={{height:"20px"}}>
-            
-        </Box> */}
         <Box className = "boxForm">
             <Grid container spacing = {3} >
                 <Grid item>
