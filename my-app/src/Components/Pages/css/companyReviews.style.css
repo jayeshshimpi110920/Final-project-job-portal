@@ -23,7 +23,7 @@
 }
 
 .banimg{
-    width: 450px;
+    width: 380px;
     /* height: 250px; */
     margin-left: auto;
     margin-right: auto;
@@ -68,3 +68,17 @@
 .company{
     background-color: #F0F0F0;
 }
+
+.ftext{
+    text-align: center;
+    padding: 5px;
+    font-size: 40px;
+    /* fontFamily: 'Comfortaa cursive' */
+    font-family: 'Comfortaa cursive';
+}
+
+@media only screen and (max-width: 600px) {
+    .ftext {
+      font-size: 4vh;
+    }
+  }

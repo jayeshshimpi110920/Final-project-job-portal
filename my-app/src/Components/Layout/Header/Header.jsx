@@ -58,7 +58,6 @@ export default function Header() {
                           
                               <UserMenu/>
                           
-
                           {/* <Typography style={{display:'flex',alignItems:'center'}} component={NavLink} variant='h6' to='/postjob' >
                               Employers/jobs
                           </Typography> */}

@@ -62,7 +62,7 @@ class TypeWriter extends React.PureComponent {
   }
 
   render() {
-    return <span style={{color:"red", fontWeight: "bolder" , fontSize:"3vw"}} className="typewriter">{this.state.text}</span>;
+    return <span style={{color:"red", fontWeight: "bolder" , fontSize:"35px"}} className="typewriter">{this.state.text}</span>;
   }
 }
 

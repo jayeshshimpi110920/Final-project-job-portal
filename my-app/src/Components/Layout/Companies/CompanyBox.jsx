@@ -7,10 +7,8 @@ import StarIcon from '@mui/icons-material/Star';
 
 export function CompanyBox({ logo, rating, name, handleClick, id}) {
 
-
-    
     return (
-        <Grid item container lg={4} md={4} sm={6} xs={12} style={{display:'flex', border: "1px solid #f2f2f2", padding: "20px"}}>
+        <Grid item container spacing={1} md={4} sm={6} xs={12}  style={{display:'flex', border: "1px solid #C8C8C8", padding: "15px", borderRadius:"5px"}}>
             <Grid item>
                 <img src = {logo} alt = {name} width = "50px" style={{marginLeft:'10px'}}/>
             </Grid>
@@ -29,11 +27,11 @@ export function CompanyBox({ logo, rating, name, handleClick, id}) {
                     </Grid>
                 </Grid>
             </Grid>
-            <Grid item container style = {{marginTop: "15px"}}>
+            {/* <Grid item container style = {{marginTop: "15px"}}>
                 <Grid className = "cursorPointer" item lg={4} md={4} sm={4} xs={4}>Salaries</Grid>
                 <Grid className = "cursorPointer" item lg={4} md={4} sm={4} xs={4}>Questions</Grid>
                 <Grid className = "cursorPointer" item lg={4} md={4} sm={4} xs={4}>Open Jobs</Grid>
-            </Grid>
+            </Grid> */}
     </Grid>
     );
 }

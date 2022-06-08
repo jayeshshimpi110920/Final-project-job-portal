@@ -60,13 +60,13 @@ export function CompanyReviews() {
             .catch((err) => console.log(err))
     },[])
 
-    const ftext={
+    // const ftext={
         
-            textAlign: "center",
-            padding: "5px",
-            fontSize:"3vw",
-            fontFamily: 'Comfortaa cursive'
-    }
+    //         textAlign: "center",
+    //         padding: "5px",
+    //         fontSize:"3vw",
+    //         fontFamily: 'Comfortaa cursive'
+    // }
 
 
 
@@ -79,22 +79,20 @@ const typeWriter = ["Machine Learning", "Java Developer", "Data Analyst", "iOs D
         <Grid container className = "boxSearch" >
              <img src={ban} className="banimg" alt="banner"></img>
         </Grid>
-        <div className="ftext" style={ftext}>Inspiring <TypeWriter data={typeWriter} /> </div>
-        <div className="ftext" style={ftext}>Jobs for the future !!</div>
+        <div className="ftext" >Inspiring <TypeWriter data={typeWriter} /> </div>
+        <div className="ftext" >Jobs for the future !!</div>
 
       
-
-{/* try  */}
 <Grid className = "companiesHiring" item container xl = {9} lg = {9} md = {9} sm = {11} xs = {12}>
             <Grid item container  >
                 <Grid item>
                     <img src="/Images/location.PNG" alt="location pin" style = {{padding: "5px 0 5px 10px"}} />
                 </Grid>
                 <Grid item>
-                    <Typography style = {{paddingTop: "15px"}} variant = "h5">Companies Review</Typography>
+                    <Typography style = {{paddingTop: "15px"}} variant = "h5">Companies Reviews</Typography>
                 </Grid>
             </Grid>
-            <Grid container style={{width:'1000px'}}>
+            <Grid container style={{width:'1020px', gap:"" ,paddingLeft:"30px" }}>
                     {
                         companies.map((item) => {
                             return(
@@ -113,40 +111,7 @@ const typeWriter = ["Machine Learning", "Java Developer", "Data Analyst", "iOs D
         </Grid>
 
 
-
-{/* try  */}
-
-
-
-        <Grid className = "companiesHiring" item container xl = {9} lg = {9} md = {9} sm = {11} xs = {12}>
-            <Grid item container  >
-                <Grid item>
-                    <img src="/Images/popularcompany.PNG" alt="location pin" style = {{padding: "5px 0 5px 10px"}} />
-                </Grid>
-                <Grid item>
-                    <Typography style = {{paddingTop: "15px"}} variant = "h5">Popular Companies</Typography>
-                </Grid>
-            </Grid>
-            <Grid container style={{width:'1000px'}}>
-                    {
-                        companies.map((item) => {
-                            return(
-                                <CompanyBox 
-                                key = {item.id}
-                                logo = {item.logo}
-                                name = {item.company}
-                                rating = {item.ratings}
-                                id = {item.id}
-                                handleClick = {handleCompanyClick}
-                                />
-                            )
-                        })
-                    }
-            </Grid>
-        </Grid>
-
-
-        
+ 
         <Grid className = "companiesHiring" style = {{borderTop: "10px solid #ff5a1f", padding: "25px", justifyContent: "space-between"}} container item xl={9} lg={9} md={9} sm={11} xs={12}>
             <Grid item >
                 <Typography variant = "h5">Rate your recent company:</Typography>
