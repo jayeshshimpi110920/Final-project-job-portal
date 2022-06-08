@@ -30,6 +30,8 @@ const fetchError = () => {
   };
 };
 
+
+//
 export const setCurrentPage = payload=>{
     return{
       type:SET_PAGE,
@@ -73,7 +75,7 @@ export const dispatchCount = (payload) => (dispatch) => {
       jobType_like: jobType,
       _start: start,
 
- 
+
     },
   };
 
@@ -83,9 +85,7 @@ export const dispatchCount = (payload) => (dispatch) => {
   });
 };
 
-export const getSearchData = (job = "", location = "", page = "1") => (
-  dispatch
-) => {
+export const getSearchData = (job = "", location = "", page = "1") => (dispatch) => {
   dispatch(fetchloading());
 
   let url = `${base_url}/jobs?_page=${page}&_limit=5`;
@@ -106,7 +106,6 @@ export const getSearchData = (job = "", location = "", page = "1") => (
   axios(config)
     .then((res) => {
       dispatch(fetchSuccess(res.data));
-      // res.data.results?.map(item=>dispatch(addJobs(item)))
     })
     .then(() => {
       let url = `${base_url}/jobs`;
@@ -118,10 +117,7 @@ export const getSearchData = (job = "", location = "", page = "1") => (
       } else if (job !== "") {
         url = `${base_url}/jobs?jobTitle_like=${job}`;
       }
-      axios({
-        method: "GET",
-        url: url,
-      }).then((res) => {
+      axios({config}).then((res) => {
         dispatch(setCount(res.data.length));
       });
     })

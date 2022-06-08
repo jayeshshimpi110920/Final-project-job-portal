@@ -17,7 +17,7 @@ function Home(props) {
                 <Link className="link" to="/postjob" >
                     {`Employers Yours next job is - `} 
                 </Link>
-                Your next hire is here
+                Hire From Here
             </div>
             {/* <RecentSearch /> */}
             <h3 style={{marginTop:"40px"}}>RecentSearch</h3>

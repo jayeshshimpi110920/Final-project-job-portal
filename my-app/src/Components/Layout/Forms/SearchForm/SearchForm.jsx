@@ -16,20 +16,23 @@ function SearchForm(props) {
     const [job,setJob] = useState('');
     const [location,setLocation] = useState('');
     const jobOptions = ['Java Developer','Javascript Developer','React Developer','Government','Account']
-    const locationOptions = ['Bangalore','Mumbai','Delhi','Kolkata','Chennai'];
+    const locationOptions = ['Bangalore','Mumbai','Delhi','Kolkata','Chennai', 'Jalgaon'];
     const history = useHistory()
     const [error,setError] = useState(false);
     
 
     const handleSearch=e=>{
-        
-        e.preventDefault()
+        e.preventDefault();
+
+        //if both are null the return error
         if(job === "" && location === ""){
             setError(true)
             return
         }
+
+        //default value of number of page 1;
         dispatch(setCurrentPage(1))
-        dispatch(getSearchData(job === ""?"":job,location=== "" ? "" : location))
+        dispatch(getSearchData(job === ""?"":job,location=== ""?"" : location))
         
         let data = loadData("recent") || []
         let str = job !== "" && location !== "" ? {category:"both" , query: `${job} - ${location}`} : job === "" && location !== "" ? {category:"location", query:`${location}`} : {category:"job",query:`${job}`}
@@ -60,15 +63,14 @@ function SearchForm(props) {
         saveData("recent",data.reverse())
         history.push(`/jobs?q=${job}&location=${location}&page=1`)
 
-
     }
-
-
 
     // const handelSubmit = (e)=>{
     //     e.preventDefault();
     //     history.push(`/jobs/q=${job}&l=${location}`)
     // }
+
+
     return (
         (<>
             { error ? <Box>Query is Empty</Box> : <></> }

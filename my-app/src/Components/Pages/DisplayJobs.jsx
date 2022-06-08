@@ -54,7 +54,7 @@ function DisplayJobs(props) {
     
 
 
-    let [sortDateIsCliked,setSortDateIsCliked] = useState(false)
+    // let [sortDateIsCliked,setSortDateIsCliked] = useState(false)
 
 
     let [jobData,setJobData] = useState(null)   
@@ -116,9 +116,6 @@ function DisplayJobs(props) {
                     
                     <>
                 <Box>
-
-          
-
             </Box>
             <Box className="greyText">
                 jobs in {location}

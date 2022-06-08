@@ -2,7 +2,6 @@ function loadData(key) {
     let data = window.localStorage.getItem(key);
     data = JSON.parse(data);
     return data;
-
 }
 
 

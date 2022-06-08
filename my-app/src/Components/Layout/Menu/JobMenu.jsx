@@ -81,11 +81,7 @@ const dispatch = useDispatch()
         anchorEl={anchorEl}
         keepMounted
         open={Boolean(anchorEl)}
-        onClose={handleClose}
-        // classes={{
-        //   paper: classes.paper
-        // }}
-        >
+        onClose={handleClose}>
         {
 
         saved_jobs[jobkey] ?

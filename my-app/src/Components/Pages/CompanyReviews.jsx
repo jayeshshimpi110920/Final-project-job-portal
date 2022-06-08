@@ -84,7 +84,7 @@ const typeWriter = ["AI/ML", "Java Developer", "Data Analyst", "iOs Devloper", "
                     <Typography style = {{paddingTop: "15px"}} variant = "h5">Companies Reviews</Typography>
                 </Grid>
             </Grid>
-            <Grid container style={{width:'1020px', gap:"" ,paddingLeft:"30px" }}>
+            <Grid container style={{width:'1020px', gap:"" ,paddingLeft:"30px" , paddingRight:"20px" }}>
                     {
                         companies.map((item) => {
                             return(

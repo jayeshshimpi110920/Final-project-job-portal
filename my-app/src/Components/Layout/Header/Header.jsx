@@ -43,6 +43,9 @@ export default function Header() {
                   <Box className="header_left">
                       <img className="logo" src="/Images/logo.svg" alt=""/>
                       <Box className="link" sx={{ display: { xs: 'none', sm: 'block' } }}>
+                          <Typography component={NavLink} className="Navlink" variant='h6' to='/login' >
+                              Home
+                          </Typography>
                           <Typography component={NavLink} className="Navlink" variant='h6' to='/' >
                               Find Jobs
                           </Typography>
@@ -63,12 +66,12 @@ export default function Header() {
                                 <Button  {...bindTrigger(popupState)}>
                                     <MenuIcon/>
                                 </Button>
-                                <Menu {...bindMenu(popupState)}>
+                                <Menu {...bindMenu(popupState)} style={{padding:"0px", margin:"0px"}}>
                                         <Typography component={NavLink} className="Navlink" variant='h6' to='/' >
-                                           <MenuItem > Find Jobs </MenuItem>
+                                           <MenuItem > <WorkIcon/>Find Jobs </MenuItem>
                                         </Typography>
                                         <Typography component={NavLink} className="Navlink" variant='h6' to='/companies' >
-                                             <MenuItem >Company Reviews</MenuItem>
+                                             <MenuItem > <ReviewsIcon/> Company Reviews</MenuItem>
                                         </Typography>
                                 </Menu>
                                 </React.Fragment>
