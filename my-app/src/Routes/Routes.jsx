@@ -10,6 +10,7 @@ import { Register } from '../Components/Pages/Register';
 import { Review } from '../Components/Pages/Review';
 import SavedJobs from '../Components/Pages/SavedJobs';
 import PrivateRoute from './PrivateRoute';
+import LandingPage from '../Components/Pages/LandingPage.jsx';
 
 function Routes(props) {
     return (
@@ -17,18 +18,22 @@ function Routes(props) {
             <Switch>
                 
                 <PrivateRoute exact path="/" Component={Home} />
-                <PrivateRoute exact  path="/postJob" Component={PostJob}/>
                 <PrivateRoute exact  path="/savedJobs" Component={SavedJobs}/>
                 <PrivateRoute exact  path="/appliedJobs" Component={AppliedJobs}/>
                 <PrivateRoute  path="/jobs" Component={DisplayJobs}/>
-                
+
+                {/* landingPage */}
                 <Route path='/login'>
+                    <LandingPage/>
+                </Route>
+                
+                <Route path='/loginmain'>
                     <Login/>
                 </Route>
                 <Route path='/Register' exact>
                     <Register />
                 </Route>
-                <PrivateRoute exact path="/" Component={Home} />
+                {/* <PrivateRoute exact path="/" Component={Home} /> */}
                 <PrivateRoute   path="/jobs" Component={DisplayJobs}/>
                 <PrivateRoute  path="/companies" Component={CompanyReviews}/>
                 <PrivateRoute path = "/reviews" exact Component = { Review } />

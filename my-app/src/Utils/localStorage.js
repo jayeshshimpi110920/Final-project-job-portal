@@ -1,34 +1,3 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 function loadData(key) {
     let data = window.localStorage.getItem(key);
     data = JSON.parse(data);
@@ -40,7 +9,6 @@ function loadData(key) {
 function saveData(key, data) {
     window.localStorage.setItem(key, JSON.stringify(data));
 }
-
 
 
 export { loadData, saveData };  

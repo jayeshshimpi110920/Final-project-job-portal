@@ -13,7 +13,7 @@ import { useSelector } from 'react-redux';
 import { useState } from "react";
 import "./header.style.css";
 import { Modal, ModalContent } from "./Modal";
-import noti from "./Noti.jpg"
+// import noti from "./Noti.jpg"
 
 
 
@@ -43,21 +43,6 @@ export default function Header() {
                           <Typography component={NavLink} className="Navlink" variant='h6' to='/companies' >
                               Company Reviews
                           </Typography>
-                          {/* <Typography component={NavLink} variant='h6' to='/carrer/salary' >
-                              Find Salary
-                          </Typography> */}
-                          
-                              <Typography component={NavLink} className="Navlink" onClick={showModal} variant='h6' to='/carrer/salary' >
-                                  {/* <Modal onOpen={showModal}> */}
-                                   Current Hiring
-                                  {/* </Modal> */}
-                              </Typography>
-                          
-                          {isOpen && (
-                            <ModalContent onClose={() => setIsopen(false)}>
-                              <img src={noti} alt="" />
-                            </ModalContent>
-                          )}
                       </Box>
                   </Box>
                   <Box className="header_right" >

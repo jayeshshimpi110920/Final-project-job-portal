@@ -1,4 +1,5 @@
 import { LOGIN_FAILURE, LOGIN_REQUEST, LOGIN_SUCCESS, LOGOUT } from "./actionTypes"
+import { logout } from './actions';
 
 const initState = {
     isAuth:false,
@@ -28,8 +29,21 @@ export const loginReducer = (state=initState,{type,payload})=>{
         };
         case LOGOUT: return {
             ...state,
-            isAuth:false
+            isAuth:false,
+            isError:false
         }
         default: return state
     }
+}
+
+
+// export function saveTokenInLocalStorage(tokenDetails){
+//     localStorage.setItem('userDetails', JSON.stringify(tokenDetails));
+// }
+
+
+export function runLogoutTimer(dispatch , timer){
+    setTimeout(()=>{
+        dispatch(logout());
+    }, timer)
 }

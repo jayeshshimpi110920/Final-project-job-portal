@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import { styled } from '@mui/material/styles';
+// import { styled } from '@mui/material/styles';
 import CircularProgress from '@mui/material/CircularProgress';
 import "./css/login.style.css"
-
 
 import {
     Box,
@@ -26,18 +25,21 @@ const GreenCheckbox = ((props) => <Checkbox color="default" {...props} />);
 
 export function Login() {
     
-    const {isAuth,isLoading,isError,errorMsg} = useSelector(state=>state.login)
+    const {isAuth,isLoading} = useSelector(state=>state.login)
 
+ 
     const[email, setEmail] = useState("");
     const[password, setPassword] = useState("");
     const dispatch = useDispatch();
+
+
     const onEmailChange = (e) => {
         setEmail(e.target.value)
     }
-
     const onPasswordChange = (e) => {
         setPassword(e.target.value)
     }
+
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -46,29 +48,25 @@ export function Login() {
 
 
     return !isAuth ?
+    <div className='outerdiv'>
     <Container className = "container" maxWidth = "xl">
-        {isError ? <Box>{errorMsg}</Box> : <></>}
-        <Box className = "boxImg">
+
+        {/* <Box className = "boxImg" style={{height:"20px"}}>
             
-        </Box>
+        </Box> */}
         <Box className = "boxForm">
             <Grid container spacing = {3} >
                 <Grid item>
                     <Typography className = "h5" variant = "h5">Sign In</Typography>
                 </Grid>
-                <Grid item>
+                <Grid item className="innerbox">
                     <form onSubmit = { handleSubmit }>
                         <FormHelperText className = "formhelperText">Email Address</FormHelperText>
-                        <OutlinedInput  className = "outlinedInput" onChange = { onEmailChange } value = { email } required type = "text" variant="outlined"/>
+                        <OutlinedInput  className = "outlinedInput" onChange = { onEmailChange } value = { email } required type = "email" variant="outlined"/>
                         <FormHelperText className = "formhelperText">Password</FormHelperText>
                         <OutlinedInput  className = "outlinedInput" onChange = { onPasswordChange } value = { password } required type = "password" variant="outlined"/>
                         <FormControlLabel className = "checkbox"
-                            control = {<GreenCheckbox
-                                // classes={{
-                                //     root: classes.root,
-                                //     checked: classes.checked
-                        
-                                />}
+                            control = {<GreenCheckbox/>}
                             label = "Keep me signed in on this device."
                         />
                         <br/>
@@ -82,9 +80,6 @@ export function Login() {
                             className = "button"
                             variant = "contained"
                             disabled={isLoading}
-                            // classes={{
-                            //     root: classes.root2
-                            // }}
                             >
                             Sign In
                         </Button>
@@ -114,5 +109,6 @@ export function Login() {
             © Jayesh Shimpi | Naman Jain | Prachi Sachdeva
             </Grid>
         </Grid>
-    </Container> : <div to="/" />;
+    </Container>
+    </div> : <Redirect to="/" />;
 }

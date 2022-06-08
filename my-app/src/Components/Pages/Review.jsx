@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { styled } from '@mui/material/styles';
+// import { styled } from '@mui/material/styles';
 import { useDispatch, useSelector } from 'react-redux';
 import { getCompanyReviews } from '../../Redux/CompanyReviews/action';
 import axios from "axios";
@@ -7,65 +7,36 @@ import { ReviewBox } from "../Layout/Review/ReviewBox";
 import StarIcon from '@mui/icons-material/Star';
 import { Grid, Container, Typography, Button } from '@mui/material';
 import { Redirect } from 'react-router-dom';
-// import { makeStyles } from '@mui/styles/makeStyles';
-import { makeStyles } from '@material-ui/core';
+// // import { makeStyles } from '@mui/styles/makeStyles';
+// import { makeStyles } from '@material-ui/core';
 
-// const PREFIX = 'Review';
 
-// const classes = {
-//     root: `${PREFIX}-root`,
-//     imgCont: `${PREFIX}-imgCont`,
-//     optionTab: `${PREFIX}-optionTab`
-// };
+const imgCont ={
+    padding: "5px",
+    borderRadius: "5px",
+    boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)"
 
-// const StyledRedirect = styled(Redirect)((
-//     {
-//         theme
-//     }
-// ) => ({
-//     [`& .${classes.imgCont}`]: {
-//         padding: "5px",
-//         borderRadius: "5px",
-//         boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)"
-//     },
+}
 
-//     [`& .${classes.optionTab}`]: {
-//         cursor: "pointer",
-//         margin: "0 40px 0 40px",
-//         '&:hover': {
-//             borderBottom: "5px solid #397ff8",
-//             fontWeight: "bold"
-//         }
-//     }
-// }));
+const optionTab={
+       cursor: "pointer",
+       fontSize:"x-large",
+        margin: "0 40px 0 40px",
+        // &:hover: {
+        //     borderBottom: "5px solid #397ff8",
+        //     fontWeight: "bold"
+        // }
+}
 
-// const useStyle = makeStyles((
-//     {
-//         theme
-//     }
-// ) => ({
-//     [`& .${classes.imgCont}`]: {
-//         padding: "5px",
-//         borderRadius: "5px",
-//         boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)"
-//     },
 
-//     [`& .${classes.optionTab}`]: {
-//         cursor: "pointer",
-//         margin: "0 40px 0 40px",
-//         '&:hover': {
-//             borderBottom: "5px solid #397ff8",
-//             fontWeight: "bold"
-//         }
-//     }
-// }))
 
-// const FollowButton = Button;
 
 export function Review(props) {
     // const classes = useStyle();
     const companyDetails = useSelector(state => state.companies.currentCompany);
     const [reviews, setReviews] = useState([]);
+
+
     const query = new URLSearchParams(props.location.search);
     const id =query.get('id')
     const dispatch = useDispatch()
@@ -81,11 +52,13 @@ export function Review(props) {
             .catch((err) => console.log("Error getting reviews" + err))
         
     },[])
+
+
     return isAuth ? (companyDetails ?
    <Container maxwidth = "xl">
        <Grid container style = {{justifyContent:"space-between", alignItems: "center", marginBottom: "40px"}}>
            <Grid container item lg={6} md={7} sm={8}>
-               <Grid item className = "imgCont" >
+               <Grid item className = "imgCont" style={imgCont}>
                    <img src={companyDetails.logo} alt={companyDetails.company} width="100px" />
                </Grid>
                <Grid item style = {{paddingTop: "40px", paddingLeft: "20px"}}>
@@ -97,90 +70,21 @@ export function Review(props) {
                    </Typography>
                </Grid>
            </Grid>
-           {/* <Grid  item >
-               <FollowButton>Follow</FollowButton>
-               <br/>
-               <Typography variant="caption" >Get weekly updates, new jobs, and reviews</Typography>
-           </Grid> */}
        </Grid>
        <Grid container style = {{height: "40px"}}>
-           {/* <Grid item style = {{cursor: "pointer", fontWeight: "bold", borderBottom: "5px solid #085ff7"}}>
-               SnapShot
-           </Grid> */}
-           <Grid item className = "optionTab" style={{fontSize:"x-large"}}>
+
+           <Grid item className = "optionTab" style={optionTab}>
                About the company
            </Grid>
-           <Grid item className = "optionTab" style={{fontSize:"x-large"}}>
+           <Grid item className = "optionTab" style={optionTab} >
                {reviews.length} Reviews
            </Grid>
-           {/* <Grid item className = {classes.optionTab}>
-               {companyDetails.salaries} Salaries
-           </Grid>
-           <Grid item className = {classes.optionTab}>
-               {companyDetails.photos} Photos
-           </Grid>
-           <Grid item className = {classes.optionTab}>
-               {companyDetails.jobs} Jobs
-           </Grid>
-           <Grid item className = {classes.optionTab}>
-               {companyDetails.questions} Questions
-           </Grid>
-           <Grid item className = {classes.optionTab}>
-               Interviews
-           </Grid> */}
+
        </Grid>
-       {/* <Grid item style = {{marginTop: "20px", marginBottom: "30px"}} >
-           <Typography variant = "caption" >{companyDetails.company} Careers and Employment</Typography>
-       </Grid> */}
+
        <Grid item style = {{marginTop: "20px", marginBottom: "50px"}}>
            <Typography variant = "h4"><b>About the company</b></Typography>
        </Grid>
-       {/* <Grid container spacing={3} >
-           <Grid item style = {{flex:1}} >
-               <img src={companyDetails.ceo_image} alt={companyDetails.ceo_name} style={{height: "350px", borderRadius: "10px"}}/>
-           </Grid>
-           <Grid container item style = {{flex:2, flexDirection: "column"}}>
-               <Grid item xl={6} lg={6}  style = {{border: "2px solid #f2f2f2", borderRadius: "10px", padding: "20px"}}>
-                   <div style = {{fontWeight: "600"}}>
-                       CEO
-                   </div>
-                   <br/><br/>
-                   <div>
-                       {companyDetails.ceo_name}
-                   </div>
-               </Grid>
-               <Grid item xl={6} lg={6} style = {{border: "2px solid #f2f2f2", borderRadius: "10px", padding: "20px"}}>
-                   <div style = {{fontWeight: "600"}}>
-                       Revenue
-                   </div>
-                   <br/><br/>
-                   <div>
-                       {companyDetails.revenue}
-                   </div>
-               </Grid>
-           </Grid>
-           <Grid container item style = {{flex:3, flexDirection: "column"}}>
-               <Grid item xl={6} lg={6} style = {{border: "2px solid #f2f2f2", borderRadius: "10px", padding: "20px"}}>
-                   <div style = {{fontWeight: "600"}}>
-                       Founded
-                   </div>
-                   <br/><br/>
-                   <div style = {{}}>
-                       {companyDetails.founded_year}
-                   </div>
-               </Grid>
-               <Grid item xl={6} lg={6} style = {{border: "2px solid #f2f2f2", borderRadius: "10px", padding: "20px"}}>
-                   <div style = {{fontWeight: "600"}}>
-                       Company size
-                   </div>
-                   <br/><br/>
-                   <div style = {{}}>
-                       more than<br/>
-                       {companyDetails.company_size}
-                   </div>
-               </Grid>
-           </Grid>
-       </Grid> */}
 
        {/* ----> below padding change from 40px to  */}
        <Grid container style = {{justifyContent: "center", padding: "10px"}}>
@@ -188,9 +92,8 @@ export function Review(props) {
                {companyDetails.description}
            </Typography>
        </Grid>
-       {/* <Typography variant = "h5" style = {{color: "#085ff7", fontWeight: "600", cursor: "pointer"}}>
-           Learn More ＞
-       </Typography> */}
+
+
        <Grid item style = {{marginTop: "30px", marginBottom: "50px"}}>
            <Typography variant = "h4"><b>Reviews</b></Typography>
        </Grid>
@@ -211,42 +114,11 @@ export function Review(props) {
            }
        </Grid>
 
-
        <Grid container spacing = {1} style = {{fontSize : "14px", backgroundColor: "white", padding: "15px 10px", margin : "50px -20px 0"}} >
            <Grid item style = {{cursor: "pointer"}}>
            © Jayesh Shimpi | Namen Jain | Prachi Sachdeva
            </Grid>
-           {/* <Grid item>
-               -
-           </Grid>
-           <Grid item style = {{cursor: "pointer"}}>
-               Accessibility at Indeed
-           </Grid>
-           <Grid item>
-               -
-           </Grid>
-           <Grid item style = {{cursor: "pointer"}}>
-               Privacy Center
-           </Grid>
-           <Grid item>
-               -
-           </Grid>
-           <Grid item style = {{cursor: "pointer"}}>
-               Cookies
-           </Grid>
-           <Grid item>
-               -
-           </Grid>
-           <Grid item style = {{cursor: "pointer"}}>
-               Privacy
-           </Grid>
-           <Grid item>
-               -
-           </Grid>
-           <Grid item style = {{cursor: "pointer"}}>
-               Terms
-           </Grid> */}
        </Grid>
    </Container>
-   : <></>) :  <div to="/login" />;
+   : <></>) :  <Redirect to="/login" />;
 }

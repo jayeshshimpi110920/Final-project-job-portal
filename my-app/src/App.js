@@ -11,8 +11,6 @@ function App() {
     <StyledEngineProvider injectFirst>
       <ThemeProvider theme={theme}>
         <div className="App">
-          {/* {console.log()}; */}
-
           {isAuth ? <Header /> : <></>}
           <Routes />
         </div>

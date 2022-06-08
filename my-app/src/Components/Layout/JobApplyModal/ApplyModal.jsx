@@ -22,10 +22,16 @@ import { Button } from '@mui/material';
 //   }
 // ) => ({
 //   [`& .${classes.modal}`]: {
-//     display: 'flex',
-//     alignItems: 'center',
-//     justifyContent: 'center',
+    // display: 'flex',
+    // alignItems: 'center',
+    // justifyContent: 'center',
 //   },
+
+const modal={
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center'
+}
 
 //   [`& .${classes.paper}`]: {
 //     backgroundColor: theme.palette.background.paper,
@@ -35,26 +41,41 @@ import { Button } from '@mui/material';
 //   },
 
 //   [`& .${classes.applyForm}`]: {
-//     boxSizing:'border-box',
-//     width: "600px",
-//     borderRadius:"10px", 
-//     height: "80vh", 
-//     backgroundColor: "white",
-//     outline:'none',
-//     padding:'40px',
+    // boxSizing:'border-box',
+    // width: "600px",
+    // borderRadius:"10px", 
+    // height: "80vh", 
+    // backgroundColor: "white",
+    // outline:'none',
+    // padding:'40px',
 //   },
+
+const applyForm={
+  boxSizing:'border-box',
+  width: "80%",
+  borderRadius:"10px", 
+  height: "80vh", 
+  backgroundColor: "white",
+  outline:'none',
+  padding:'40px',
+
+}
 
 //   [`& .${classes.label}`]: {
 //     marginBottom:"20px"
 //   }
 // }));
 
+const textbox={
+  width:"100%",
+  border:"1px solid black"
+}
+
 export const ApplyModal = ({open,handleClose,jobId,handleApply}) => {
 
   return (
     <div
       style={{
-       
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
@@ -77,36 +98,31 @@ export const ApplyModal = ({open,handleClose,jobId,handleApply}) => {
         aria-describedby="simple-modal-description"
       >
         
-        <div className="applyForm" >
-          {/* <div>{jobId}</div> */}
+        <div className="applyForm" style={applyForm} >
 
-          <form action="
-          ">
-            <Grid container>
+          <form action="">
+            <Grid container style={{width:"100%"}}>
               <Grid item>
-                <label style={{margin:"20px 0px",display:"block"}}>
+                <label style={{margin:"20px 0px",display:"block" }}>
                     Name
                 </label>
-                
-                <OutlinedInput required style={{width:'500px'}}/>
+                <OutlinedInput required style={textbox}/>
               </Grid>
             </Grid>
             <Grid container>
               <Grid item>
-                <label style={{margin:"20px 0px",display:"block"}}>
+                <label style={{margin:"10px 0px",display:"block"}}>
                     Email
                 </label>
-                
-                <OutlinedInput required style={{width:'500px'}} />
+                <OutlinedInput required style={textbox} />
               </Grid>
             </Grid>
             <Grid container>
               <Grid item>
-                <label style={{margin:"20px 0px",display:"block"}}>
+                <label style={{margin:"10px 0px",display:"block"}}>
                     Phone
                 </label>
-                
-                <OutlinedInput required style={{width:'500px'}}/>
+                <OutlinedInput required style={textbox}/>
               </Grid>
             </Grid>
               <UploadForm />
@@ -114,8 +130,6 @@ export const ApplyModal = ({open,handleClose,jobId,handleApply}) => {
           <Button variant='contained' color='primary' style={{marginRight:'20px'}} onClick={handleApply}>Apply</Button>
           <Button variant='outlined' onClick={handleClose}>cancel</Button>
         </div>
-
-
       </Modal>
     </div>
   );

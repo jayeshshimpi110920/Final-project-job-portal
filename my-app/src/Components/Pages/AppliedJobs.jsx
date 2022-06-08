@@ -13,11 +13,9 @@ import DialogTitle from '@mui/material/DialogTitle';
 import Slide from '@mui/material/Slide';
      
         
-
-
-const Transition = React.forwardRef(function Transition(props, ref) {
-    return <Slide direction="up" ref={ref} {...props} />;
-  });
+// const Transition = React.forwardRef(function Transition(props, ref) {
+//     return <Slide direction="up" ref={ref} {...props} />;
+//   });
 
 function AppliedJobs(props) {
 
@@ -121,7 +119,7 @@ function AppliedJobs(props) {
                                     </Box>
                                      <Dialog
                                      open={open}
-                                     TransitionComponent={Transition}
+                                    //  TransitionComponent={Transition}
                                      keepMounted
                                      onClose={handleClose}
                                      aria-labelledby="alert-dialog-slide-title"

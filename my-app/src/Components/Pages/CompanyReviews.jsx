@@ -104,7 +104,7 @@ const typeWriter = ["Machine Learning", "Java Developer", "Data Analyst", "iOs D
                                 name = {item.company}
                                 rating = {item.ratings}
                                 id = {item.id}
-                                // handleClick = {handleCompanyClick}
+                                handleClick = {handleCompanyClick}
                                 />
                             )
                         })
@@ -137,7 +137,7 @@ const typeWriter = ["Machine Learning", "Java Developer", "Data Analyst", "iOs D
                                 name = {item.company}
                                 rating = {item.ratings}
                                 id = {item.id}
-                                // handleClick = {handleCompanyClick}
+                                handleClick = {handleCompanyClick}
                                 />
                             )
                         })

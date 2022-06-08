@@ -9,12 +9,12 @@
 .boxForm{
     background-color: #ffffff;
     width: 450px;
-    padding: 20px;
+    padding: 15px;
 }
 
 .outlinedInput{
     border: 1px solid #cccccc;
-    height: 48px;
+    height: 30px;
     width: 450px;
     margin: 7px 0;
 }

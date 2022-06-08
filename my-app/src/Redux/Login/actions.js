@@ -5,6 +5,7 @@ import {
   LOGIN_SUCCESS,
   LOGOUT,
 } from "./actionTypes";
+import { runLogoutTimer, saveTokenInLocalStorage } from "./reducer";
 
 const loginRequest = () => {
   return {
@@ -27,6 +28,7 @@ const loginFailure = (errorMsg) => {
 };
 
 export const logout = () => {
+  localStorage.removeItem('persist');
   return {
     type: LOGOUT,
   };
@@ -35,15 +37,15 @@ export const logout = () => {
 export const makeLoginRequest = ({ email, password }) => (dispatch) => {
   dispatch(loginRequest())
 
-
-  // https://indeed-mock-server.herokuapp.com/users
+  const expireIn= 3600;
 
   axios
     .get("http://localhost:9002/login")
     .then((res) => {
       console.log(res.data.users);
+      // saveTokenInLocalStorage(res.data);
+      runLogoutTimer(dispatch, (expireIn * 1000));
       dispatch(authenticateUser(email, password, res.data.users));
-
     })
     .catch((err) => dispatch(loginFailure("Somthing went wrong")));
 };
@@ -55,12 +57,14 @@ const authenticateUser = (email, password, usersData ) => (dispatch) => {
       return;
     } else {
       if (usersData[i].email === email && usersData[i].password !== password) {
+        alert("wrong password");
         dispatch(loginFailure("Wrong password"));
         return;
       }
     }
   }
 
+  alert("User Does Not Exist");
   dispatch(loginFailure("User Does Not Exist"));
 };
 

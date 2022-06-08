@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import SearchForm from '../Layout/Forms/SearchForm/SearchForm';
 import RecentSearch from '../Layout/RecentSearch';
 import "./css/Home.style.css"
+// import RecentSearch from './../Layout/RecentSearch';
 
 
 
@@ -18,7 +19,8 @@ function Home(props) {
                 </Link>
                 Your next hire is here
             </div>
-            <RecentSearch />
+            {/* <RecentSearch /> */}
+            <h3 style={{marginTop:"40px"}}>RecentSearch</h3>
         </div>
     );
 }
