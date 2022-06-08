@@ -52,21 +52,13 @@ export function CompanyReviews() {
     }
 
     useEffect(() => {
-        axios.get("https://indeed-mock-server.herokuapp.com/companies")
+        axios.get("https://job-api-jayesh-deploy.herokuapp.com/companies")
             .then((res) => {
                 
                 setCompanies(res.data)
             })
             .catch((err) => console.log(err))
     },[])
-
-    // const ftext={
-        
-    //         textAlign: "center",
-    //         padding: "5px",
-    //         fontSize:"3vw",
-    //         fontFamily: 'Comfortaa cursive'
-    // }
 
 
 

@@ -1,6 +1,7 @@
 .root{
     flex-grow: 1;
     background-color: #fff;
+    width: 90%;
 }
 
 .toolbar{
@@ -38,15 +39,20 @@
 
 .header_right{
     display: flex;
-    width: 250px;
+    width: 50px;
     justify-content: space-between;
 }
 
 .link{
     margin-left: 14px;
-    
 }
 
 .Navlink{
     margin-right: 10px;
 }
+
+@media only screen and (max-width: 600px) {
+    .link{
+        margin-left: 0px;
+    }
+  }

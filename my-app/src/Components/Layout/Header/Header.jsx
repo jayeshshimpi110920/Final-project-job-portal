@@ -12,8 +12,16 @@ import UserMenu from '../Menu/UserMenu';
 import { useSelector } from 'react-redux';
 import { useState } from "react";
 import "./header.style.css";
-import { Modal, ModalContent } from "./Modal";
-// import noti from "./Noti.jpg"
+
+import Button from '@mui/material/Button';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
+import PopupState, { bindTrigger, bindMenu } from 'material-ui-popup-state';
+
+import WorkIcon from '@mui/icons-material/Work';
+import ReviewsIcon from '@mui/icons-material/Reviews';
+import MenuIcon from '@mui/icons-material/Menu';
+
 
 
 
@@ -24,9 +32,7 @@ import { Modal, ModalContent } from "./Modal";
 export default function Header() {
 
 
-  //pop-up notification..!!!
-  const [isOpen, setIsopen] = useState(false);
-  const showModal = () => setIsopen((prev) => !prev);
+
 
 
   return (
@@ -36,7 +42,7 @@ export default function Header() {
               <Container className="header_container" disableGutters maxWidth={false}>
                   <Box className="header_left">
                       <img className="logo" src="/Images/logo.svg" alt=""/>
-                      <Box className="link" display={{ xs: 'none', sm: 'block', md: 'block' }}>
+                      <Box className="link" sx={{ display: { xs: 'none', sm: 'block' } }}>
                           <Typography component={NavLink} className="Navlink" variant='h6' to='/' >
                               Find Jobs
                           </Typography>
@@ -44,20 +50,45 @@ export default function Header() {
                               Company Reviews
                           </Typography>
                       </Box>
+                      <Box className="link" sx={{ display: { xs: 'block', sm: 'none' } }}>
+                          {/* <Typography component={NavLink} className="Navlink" style={{marginRight:"20px"}} variant='h6' to='/' >
+                            <WorkIcon/>
+                          </Typography>
+                          <Typography component={NavLink} className="Navlink" variant='h6' to='/companies' >
+                             <ReviewsIcon/>
+                          </Typography> */}
+                          <PopupState variant="popover" popupId="demo-popup-menu">
+                            {(popupState) => (
+                                <React.Fragment>
+                                <Button  {...bindTrigger(popupState)}>
+                                    <MenuIcon/>
+                                </Button>
+                                <Menu {...bindMenu(popupState)}>
+                                        <Typography component={NavLink} className="Navlink" variant='h6' to='/' >
+                                           <MenuItem > Find Jobs </MenuItem>
+                                        </Typography>
+                                        <Typography component={NavLink} className="Navlink" variant='h6' to='/companies' >
+                                             <MenuItem >Company Reviews</MenuItem>
+                                        </Typography>
+                                </Menu>
+                                </React.Fragment>
+                            )}
+                            </PopupState>
+                      </Box>
                   </Box>
                   <Box className="header_right" >
 
-                          <IconButton edge="start" color="inherit" aria-label="open drawer" size="large">
+                          {/* <IconButton edge="start" color="inherit" aria-label="open drawer" size="large">
                           <ForumIcon />
-                          </IconButton>
+                          </IconButton> */}
 
-                          <IconButton edge="start" color="inherit" aria-label="open drawer" size="large">
+                          {/* <IconButton edge="start" color="inherit" aria-label="open drawer" size="large">
                               <NotificationsIcon />
-                          </IconButton>
+                          </IconButton> */}
 
                           
                               <UserMenu/>
-                          
+
                           {/* <Typography style={{display:'flex',alignItems:'center'}} component={NavLink} variant='h6' to='/postjob' >
                               Employers/jobs
                           </Typography> */}
