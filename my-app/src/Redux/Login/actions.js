@@ -40,7 +40,9 @@ export const makeLoginRequest = ({ email, password }) => (dispatch) => {
   const expireIn= 3600;
 
   axios
-    .get("http://localhost:9002/login")
+    .get("http://localhost:9002/login",{
+      email,password
+    })
     .then((res) => {
       console.log(res.data.users);
       // saveTokenInLocalStorage(res.data);
