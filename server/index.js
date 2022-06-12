@@ -2,7 +2,7 @@ import express from "express"
 import cors from "cors"
 import mongoose from "mongoose";
 import bcrypt from "bcrypt";
-//middleware
+//middleware //change for jayesh
 const app = express()
 app.use(express.json())
 app.use(express.urlencoded())
