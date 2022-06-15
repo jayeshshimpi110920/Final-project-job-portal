@@ -3,6 +3,18 @@ import mongoose from "mongoose";
 const router = express.Router();
 import bcrypt from "bcrypt";
 import User from "../models/user.js";
+// const jwt = require("jsonwebtoken");
+import jwt from "jsonwebtoken"
+
+
+const maxAge = 1 * 24 * 60 * 60;
+const createToken = (id) => {
+  return jwt.sign({ id }, "super_secret_key", {
+    expiresIn: maxAge,
+  });
+};
+
+
 async function comparePassword(plaintextPassword, hash) {
     const result = await bcrypt.compare(plaintextPassword, hash);
     return result
@@ -10,6 +22,9 @@ async function comparePassword(plaintextPassword, hash) {
 router.post('/login', async function (req, res) {
     const { email, password } = req.body;
     await User.findOne({ email: email }, (err, user) => {
+
+        const token = createToken(user._id);
+        res.cookie("jwt", token, { httpOnly: true, maxAge: maxAge * 1000 });
 
         comparePassword(password, user.password).then(result => res.send(user))
     }
