@@ -4,17 +4,6 @@ import jwt from "jsonwebtoken"
 const router = express.Router();
 import bcrypt from "bcrypt";
 import User from "../models/user.js";
-// const jwt = require("jsonwebtoken");
-import jwt from "jsonwebtoken"
-
-
-const maxAge = 1 * 24 * 60 * 60;
-const createToken = (id) => {
-    return jwt.sign({ id }, "super_secret_key", {
-        expiresIn: maxAge,
-    });
-};
-
 
 async function comparePassword(plaintextPassword, hash) {
     const result = await bcrypt.compare(plaintextPassword, hash);
@@ -30,9 +19,6 @@ router.post('/login', async function (req, res) {
     const { email, password } = req.body;
     await User.findOne({ email: email }, (err, user) => {
         const token = createToken(user.email)
-        res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
-        res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-        res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
         res.cookie(("jwt"), token, { httpOnly: false, maxAge: maxAge * 1000 }, { sameSite: 'none' });
         comparePassword(password, user.password).then(result => res.send(user))
     }
