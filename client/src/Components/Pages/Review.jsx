@@ -7,6 +7,7 @@ import { Redirect } from "react-router-dom";
 import { getCompanyReviews } from "../../Redux/CompanyReviews/action";
 import Footer from "../Layout/footer/Footer";
 import { ReviewBox } from "../Layout/Review/ReviewBox";
+import styles from "./Register.module.css";
 const imgCont = {
   padding: "5px",
   borderRadius: "5px",
@@ -38,7 +39,7 @@ export function Review(props) {
   return isAuth ? (
     companyDetails ? (
       <div>
-        <Container style={{ width:"1020px", marginTop: "100px" }}>
+        <Container className={styles.reviewcontainer}>
           <Grid
             container
             style={{

@@ -5,6 +5,7 @@ import { NavLink } from "react-router-dom";
 import { makeApplyRequest } from "../../Redux/JobApply/actions";
 import { makeSaveJobRequest } from "../../Redux/SaveJob/actions";
 import { ApplyModal } from "../Layout/JobApplyModal/ApplyModal";
+import styles from "./Register.module.css";
 
 function SavedJobs(props) {
   const { saved_jobs, applied_job, id } = useSelector(
@@ -55,7 +56,7 @@ function SavedJobs(props) {
   };
 
   return (
-    <div style={{ padding: "100px 10vw", display: "flex" }}>
+    <div className={styles.savedjobconatiner}>
       <Box>
         <Typography
           variant={"h5"}
