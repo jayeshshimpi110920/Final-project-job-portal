@@ -11,6 +11,7 @@ import { useCookies } from 'react-cookie';
 import jwt from 'jsonwebtoken'
 import { useHistory} from 'react-router-dom';
 
+import styles from "./Register.module.css";
 const imgCont = {
   padding: "5px",
   borderRadius: "5px",
@@ -91,7 +92,7 @@ useEffect(() => {
   return (
     companyDetails ? (
       <div>
-        <Container style={{ width:"1020px", marginTop: "100px" }}>
+        <Container className={styles.reviewcontainer}>
           <Grid
             container
             style={{

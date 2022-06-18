@@ -9,6 +9,7 @@ import jwt from 'jsonwebtoken'
 import { ApplyModal } from "../Layout/JobApplyModal/ApplyModal";
 import { useHistory} from 'react-router-dom';
 import { useEffect } from 'react';
+import styles from "./Register.module.css";
 
 function SavedJobs(props) {
 
@@ -100,7 +101,7 @@ useEffect(() => {
   };
 
   return (
-    <div style={{ padding: "100px 10vw", display: "flex" }}>
+    <div className={styles.savedjobconatiner}>
       <Box>
         <Typography
           variant={"h5"}

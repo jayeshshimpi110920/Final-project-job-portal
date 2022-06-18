@@ -92,11 +92,4 @@ router.get('/jwt', async (req, res) => {
 
 
 
-
-
-
-
-
-
-
 export default router;
