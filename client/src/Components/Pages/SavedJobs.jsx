@@ -10,6 +10,7 @@ import { ApplyModal } from "../Layout/JobApplyModal/ApplyModal";
 import { useHistory} from 'react-router-dom';
 import { useEffect } from 'react';
 import styles from "./Register.module.css";
+import { logout } from "../../Redux/Login/actions.js";
 
 function SavedJobs(props) {
 
@@ -48,6 +49,7 @@ useEffect(() => {
           }
       }
     else{
+        dispatch(logout());
         history.push('/login');
     }
 }, [])

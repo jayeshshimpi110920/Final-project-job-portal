@@ -10,6 +10,7 @@ import { ReviewBox } from "../Layout/Review/ReviewBox";
 import { useCookies } from 'react-cookie';
 import jwt from 'jsonwebtoken'
 import { useHistory} from 'react-router-dom';
+import { logout } from "../../Redux/Login/actions.js";
 
 import styles from "./Register.module.css";
 const imgCont = {
@@ -59,6 +60,7 @@ useEffect(() => {
           }
       }
     else{
+        dispatch(logout());
         history.push('/login');
     }
 }, [])
