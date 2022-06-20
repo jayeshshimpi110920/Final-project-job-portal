@@ -23,29 +23,37 @@ async function comparePassword(plaintextPassword, hash) {
 
 router.post('/login', async function (req, res) {
     const { email, password } = req.body;
-    await User.findOne({ email: email }, async(err, user) => {
-        const token = createToken(user.email)
-        // res.cookie(("jayjwt"), token, { httpOnly: false, maxAge: maxAge * 1000 });
 
-        const validPassword =await comparePassword(password, user.password);
-        console.log(validPassword)
-        if (validPassword) {
-            res.status(200).send({user , token});
-        } else {
-            res.status(400).send({error:"Invalid credential"})
+    try{
+        await User.findOne({ email: email }, async(err, user) => {
+            const token = createToken(user.email)
+            // res.cookie(("jayjwt"), token, { httpOnly: false, maxAge: maxAge * 1000 });
+    
+            const validPassword =await comparePassword(password, user.password);
+            console.log(validPassword)
+            if (validPassword) {
+                res.status(200).send({user , token});
+            } else {
+                res.status(400).send({error:"Wrong PassWord" , check:"WRONG_PASSWORD"})
+            }
+            // .then(result => res.send({user , token})) 
         }
-        // .then(result => res.send({user , token})) 
+        )
     }
-    )
-    res.end
+    catch(err){
+        res.status(400).send({error:"User not Found" , check:"USER_NOT_FOUND"})
+    }
+    
+    // res.end
 });
 
 router.post("/register", async (req, res) => {
     const { name, email, password, user_id, saved_jobs, applied_job, my_reviews } = req.body;
     let hashedPassword = await bcrypt.hash(password, 10);
     User.findOne({ email: email }, (err, user) => {
+        console.log(user);
         if (user) {
-            res.send({ message: "User already registerd" })
+            res.send({ message: "ALREADY_REGISTER" })
         } else {
 
             const user = new User({
