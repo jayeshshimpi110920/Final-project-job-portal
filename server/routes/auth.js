@@ -23,14 +23,19 @@ async function comparePassword(plaintextPassword, hash) {
 
 router.post('/login', async function (req, res) {
     const { email, password } = req.body;
-    await User.findOne({ email: email }, (err, user) => {
+    await User.findOne({ email: email }, async(err, user) => {
         const token = createToken(user.email)
-        res.cookie(("jwt"), token, { httpOnly: false, maxAge: maxAge * 1000 });
+        // res.cookie(("jayjwt"), token, { httpOnly: false, maxAge: maxAge * 1000 });
 
-
-        comparePassword(password, user.password).then(result => res.send({user , token}))
+        const validPassword =await comparePassword(password, user.password);
+        console.log(validPassword)
+        if (validPassword) {
+            res.status(200).send({user , token});
+        } else {
+            res.status(400).send({error:"Invalid credential"})
+        }
+        // .then(result => res.send({user , token})) 
     }
-
     )
     res.end
 });

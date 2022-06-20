@@ -11,6 +11,7 @@ import { useHistory} from 'react-router-dom';
 import { useEffect } from 'react';
 import styles from "./Register.module.css";
 import { logout } from "../../Redux/Login/actions.js";
+import {AnimatePresence, motion} from 'framer-motion/dist/framer-motion'
 
 function SavedJobs(props) {
 
@@ -103,6 +104,7 @@ useEffect(() => {
   };
 
   return (
+    <motion.div initial={{opacity:0}} animate={{opacity:1}} exit={{opacity:0}} >
     <div className={styles.savedjobconatiner}>
       <Box>
         <Typography
@@ -215,6 +217,7 @@ useEffect(() => {
         />
       </Box>
     </div>
+    </motion.div>
   );
 }
 
