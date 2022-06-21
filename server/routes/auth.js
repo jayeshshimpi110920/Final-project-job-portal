@@ -89,8 +89,9 @@ router.get('/jwt', async (req, res) => {
 		const email = decoded.id;
         
 		const user = await User.findOne({ email: email })
+        console.log(user)
         if(user){
-            return res.status(201).send({ status: 'ok'})
+            return res.status(201).send({user})
         }
 		
         return res.status(401).send({status:'fail'})
