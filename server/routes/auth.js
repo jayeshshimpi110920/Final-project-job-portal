@@ -7,14 +7,12 @@ import User from "../models/user.js";
 // const jwt = require("jsonwebtoken");
 // import jwt from "jsonwebtoken"
 
-
 const maxAge = 1 * 24 * 60 * 60;
 const createToken = (id) => {
     return jwt.sign({ id }, "super_secret_key", {
         expiresIn: maxAge,
     });
 };
-
 
 async function comparePassword(plaintextPassword, hash) {
     const result = await bcrypt.compare(plaintextPassword, hash);
@@ -26,6 +24,10 @@ router.post('/login', async function (req, res) {
 
     try{
         await User.findOne({ email: email }, async(err, user) => {
+            if(user===null){
+                res.status(400).send({error:"User not Found" , check:"USER_NOT_FOUND"});
+                return;
+            }
             const token = createToken(user.email)
             // res.cookie(("jayjwt"), token, { httpOnly: false, maxAge: maxAge * 1000 });
     
@@ -33,8 +35,10 @@ router.post('/login', async function (req, res) {
             console.log(validPassword)
             if (validPassword) {
                 res.status(200).send({user , token});
+                return;
             } else {
                 res.status(400).send({error:"Wrong PassWord" , check:"WRONG_PASSWORD"})
+                return;
             }
             // .then(result => res.send({user , token})) 
         }
@@ -51,7 +55,6 @@ router.post("/register", async (req, res) => {
     const { name, email, password, user_id, saved_jobs, applied_job, my_reviews } = req.body;
     let hashedPassword = await bcrypt.hash(password, 10);
     User.findOne({ email: email }, (err, user) => {
-        console.log(user);
         if (user) {
             res.send({ message: "ALREADY_REGISTER" })
         } else {
